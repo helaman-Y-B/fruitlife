@@ -1,5 +1,8 @@
 const Utils = {};
 
+/* ************************
+ * Constructs the nav HTML
+ ************************** */
 Utils.getNavBar = async function() {
     let nav = "<ul id='navBar'>"
     nav += "<li><a href='/'>Home</a></li>"
