@@ -6,6 +6,7 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config();
+const static = require("./routes/static")
 const mainRoute = require("./routes/main")
 
 // Creates the app instance
@@ -18,7 +19,15 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 
+/* ***********************
+ * Routes
+ *************************/
+// Main page route
 app.use("/", mainRoute)
+
+// Static route
+app.use(static);
+app.use(express.static("public"));
 
 // .env items
 const port = process.env.PORT; 
