@@ -6,10 +6,10 @@ const mainController = {}
  * Constructs the main page
  ************************** */
 mainController.getMainPage = async function(req, res) {
-    const navBar = utilities.getNavBar();
+    const navBar = await utilities.getNavBar();
     res.render("main", {
         title: "Main Page",
-        navBar,
+        navBar
     })
 }
 

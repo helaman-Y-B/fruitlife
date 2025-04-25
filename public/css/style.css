@@ -30,6 +30,12 @@ header {
     padding: 20px;
 }
 
+nav {
+    background-color: #FF7878;
+    padding: 10px;
+    text-align: center;
+}
+
 #presentation {
     background-color: #FFDF63;
     padding: 20px;
