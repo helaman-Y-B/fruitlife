@@ -6,6 +6,7 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config();
+const mainRoute = require("./routes/main")
 
 // Creates the app instance
 const app = express();
@@ -15,12 +16,9 @@ const app = express();
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
-app.set("layout", "main");
+app.set("layout", "./layouts/layout");
 
-// Render the main layout
-app.get("/", (req, res) => {
-    res.render("main");
-});
+app.use("/", mainRoute)
 
 // .env items
 const port = process.env.PORT; 
