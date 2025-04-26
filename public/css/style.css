@@ -44,6 +44,28 @@ nav {
     text-align: center;
 }
 
+#nav-arrow{
+    width: 30px;
+    height: 30px;
+}
+
+nav li:nth-child(1) {
+    display: block; /* Show only the first <li> element */
+}
+
+nav li:nth-child(1):hover {
+    animation: nav-arrow 0.5s ease forwards;
+}
+
+@keyframes nav-arrow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+}
+
+nav li {
+    display: none;
+}
+
 #presentation {
     background-color: #FFDF63;
     padding: 20px;
