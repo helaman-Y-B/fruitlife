@@ -5,6 +5,6 @@ const router = express.Router();
 router.use(express.static("public"));
 router.use("/css", express.static(__dirname + "/css"));
 router.use("/js", express.static(__dirname + "/js"));
-router.use("/images", express.static(__dirname + "/images"));
+router.use("/img", express.static(__dirname + "/img"));
 
 module.exports = router;
