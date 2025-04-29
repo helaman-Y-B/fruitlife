@@ -47,14 +47,25 @@ nav {
 #nav-arrow{
     width: 30px;
     height: 30px;
+    transform: rotate(0deg); /* Initial state */
+    transition: transform 0.5s ease; /* Smooth transition for rotation */
+}
+
+nav:hover #nav-arrow {
+    transform: rotate(180deg); /* Rotate when hovering over the nav */
+}
+
+nav:not(:hover) #nav-arrow {
+    transform: rotate(0deg); /* Return to original state when not hovering */
 }
 
 nav li:nth-child(1) {
     display: block; /* Show only the first <li> element */
 }
 
-nav li:nth-child(1):hover {
+nav:hover li:nth-child(1) {
     animation: nav-arrow 0.5s ease forwards;
+    animation-fill-mode: forwards;
 }
 
 /* Key frame for the arrow animation on navigation bar */
@@ -82,6 +93,8 @@ nav li {
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 450px;
+    margin: auto;
 }
 
 #banner img {
@@ -109,12 +122,21 @@ nav li {
     margin: 20px 0px;
 }
 
-#most-sold .main-fruit {
+#fruits {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#fruits .main-fruit {
     background-color: #FF7878;
     padding: 5px;
     margin: 10px 0px;;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 250px;
+    margin: auto;
+    margin-bottom: 20px;
 }
 
 .main-fruit img {
@@ -142,4 +164,8 @@ nav li {
 
 footer {
     padding: 20px;
+}
+
+@media (max-width: 768px) {
+    
 }
