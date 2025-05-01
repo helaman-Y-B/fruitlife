@@ -47,26 +47,22 @@ nav {
 #nav-arrow{
     width: 30px;
     height: 30px;
-    transform: rotate(0deg); /* Initial state */
-    transition: transform 0.5s ease; /* Smooth transition for rotation */
+    transform: rotate(0deg); 
+    transition: transform 0.5s ease; 
 }
 
 nav:hover #nav-arrow {
-    transform: rotate(180deg); /* Rotate when hovering over the nav */
+    transform: rotate(180deg); 
 }
 
 nav:not(:hover) #nav-arrow {
-    transform: rotate(0deg); /* Return to original state when not hovering */
+    transform: rotate(0deg); 
 }
 
 nav li:nth-child(1) {
-    display: block; /* Show only the first <li> element */
+    display: block;
 }
 
-nav:hover li:nth-child(1) {
-    animation: nav-arrow 0.5s ease forwards;
-    animation-fill-mode: forwards;
-}
 
 /* Key frame for the arrow animation on navigation bar */
 @keyframes nav-arrow {
