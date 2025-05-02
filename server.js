@@ -8,9 +8,32 @@ const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config();
 const static = require("./routes/static")
 const mainRoute = require("./routes/main")
+const pool = require("./sql/server-connection")
+const session = require("express-session")
 
 // Creates the app instance
 const app = express();
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+    store: new (require("connect-pg-simple")(session))({
+        createTableIfMissing: true,
+        pool,
+    }),
+    secret: process.env.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: true,
+    name: "session",
+}));
+
+// Express messages middleware
+app.use(require("connect-flash")());
+app.use(function(req, res, next){
+    res.locals.messages = require("express-messages")(req, res);
+    next();
+});
 
 /* ***********************
  * View engine and template
