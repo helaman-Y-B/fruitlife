@@ -67,7 +67,7 @@ nav li:nth-child(1) {
 /* Key frame for the arrow animation on navigation bar */
 @keyframes nav-arrow {
     0% { transform: rotate(0deg); }
-    100% { transform: rotate(180deg); }
+    100% { transform: rotate(180deg); } 
 }
 
 nav li {
