@@ -11,31 +11,17 @@
 <div id="most-sold">
     <h2>Frutas mais vendidas</h2>
     <div id="fruits">
-        <div class="main-fruit">
-            <img src="/img/strawberry.jpeg" alt="fruta1">
-            <h3>Morango</h3>
-            <p>Descrição da fruta</p>
-        </div>
         <% fruits_for_sale.forEach(fruit=> { %>
             <div class="main-fruit">
                 <img src="<%= fruit.fruit_img %>" alt="<%= fruit.fruit_name %>">
                 <h3>
                     <%= fruit.fruit_name %>
                 </h3>
-                <p>Preço: <%= fruit.fruit_price %>
+                <p>
+                    Preço: <%= fruit.fruit_price %>
                 </p>
             </div>
-            <% }) %>
-                <div class="main-fruit">
-                    <img src="/img/banana.jpeg" alt="fruta1">
-                    <h3>Banana</h3>
-                    <p>Descrição da fruta</p>
-                </div>
-                <div class="main-fruit">
-                    <img src="/img/mango.jpeg" alt="fruta1">
-                    <h3>Manga</h3>
-                    <p>Descrição da fruta</p>
-                </div>
+        <% }) %>
     </div>
     <div id="ranking">
         <a href="/">Veja o ranking das frutas!</a>

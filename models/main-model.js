@@ -1,7 +1,10 @@
-const pool = require("../sql/");
+const pool = require("../sql/server-connection");
 
 async function getFruits() {
-    return await pool.query("SELECT * FROM public.fruits_for_sale");
+    const query = await pool.query("SELECT * FROM public.fruits_for_sale");
+    console.log("Query executed:", query);
+
+    return query;
 };
 
 module.exports = { getFruits };

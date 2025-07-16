@@ -23,14 +23,10 @@ INSERT INTO fruits_for_sale (
         account_fname,
         account_lname
     )
-VALUES (
-        'Banana',
-        '/img/banana.jpeg',
-        '28.80',
-        'Helamã',
-        '2',
-        'Helamã',
-        'Barbour'
-    );
+VALUES 
+    ('Banana', '/img/banana.jpeg', '28.80', 'Helamã', '2', 'Helamã', 'Barbour'),
+    ('Morango', '/img/strawberry.jpeg', '18.80', 'Helamã', '7', 'Helamã', 'Barbour'),
+    ('Manga', '/img/mango.jpeg', '34.80', 'Helamã', '45', 'Helamã', 'Barbour');
+
 SELECT *
 FROM fruits_for_sale;
