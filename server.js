@@ -8,6 +8,7 @@ const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config();
 const static = require("./routes/static")
 const mainRoute = require("./routes/main")
+const loginRoute = require("./routes/login")
 const pool = require("./sql/server-connection")
 const session = require("express-session")
 
@@ -45,12 +46,15 @@ app.set("layout", "./layouts/layout");
 /* ***********************
  * Routes
  *************************/
-// Main page route
-app.use("/", mainRoute)
+// Login page route
+app.use("/login", loginRoute);
 
 // Static route
 app.use(static);
 app.use(express.static("public"));
+
+// Main page route
+app.use("/", mainRoute)
 
 // .env items
 const port = process.env.PORT; 

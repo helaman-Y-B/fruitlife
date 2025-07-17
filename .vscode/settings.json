@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "dpg-d1ohf13ipnbc73f1t3rg-a.virginia-postgres.render.com",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "fruit_life_db_2hns",
+            "database": "fruit_life_db_2hns",
+            "username": "helamashi",
+            "password": "CIOr11s687t68mmPkPMsTovd9Hj3xTKk"
+        }
+    ]
+}

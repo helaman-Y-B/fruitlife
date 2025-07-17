@@ -75,7 +75,7 @@ nav li {
 }
 
 #presentation {
-    background-color: #FFDF63;
+    background-color: #ffeca2;
     padding: 20px;
 }
 
@@ -160,6 +160,53 @@ nav li {
 
 footer {
     padding: 20px;
+}
+
+/* CSS for the login page */
+
+#login-box {
+    background-color: #ffeca2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    background-color: #FFB46B;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 330px;
+}
+
+.form-group {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: large;
+}
+
+input {
+    font-family: 'Nunito', sans-serif;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    padding: 14px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 @media (max-width: 768px) {
