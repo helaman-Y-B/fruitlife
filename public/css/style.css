@@ -172,14 +172,55 @@ footer {
     align-items: center;
 }
 
+#login-background {
+    position: relative;
+    z-index: 0;
+}
+
 form {
     background-color: #FFB46B;
     display: flex;
     flex-direction: column;
-    padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
     max-width: 330px;
+}
+
+/* Border animation for the form */
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+#login-background::after, #login-background::before {
+    content: '';
+    position: absolute;
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    background-color: #FF7878;
+    background-image: conic-gradient(from var(--angle), #FF7878, #FFB46B, #6DE1D2, #FF7878);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 20px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
+}
+
+#login-background::before {
+    filter: blur(10px);
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
 }
 
 .form-group {
@@ -209,6 +250,34 @@ button {
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 560px) {
+    
+    /* Change the navbar when screen is bigger then 560px */
+
+    nav {
+        display: block;
+        background-color: #FF7878;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #navBar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    li:has(#nav-arrow){
+        display: none;
+    }
+
+    nav li {
+        display: block;
+        padding: 10px;
+        margin: 0 5vw 0px 5vw;
+    }
+}
+
+@media (min-width: 768px) {
     
 }

@@ -10,7 +10,7 @@ window.addEventListener("resize", () => {
 })
 
 // Check the initial screen width and set up the navigation bar functionality
-if (screenWidth < 768 ) {
+if (screenWidth < 560 ) {
     // For small screens, use click event to toggle navigation items
     document.getElementById("nav").addEventListener("click", () => {
         const navItems = document.getElementsByClassName("nav");
