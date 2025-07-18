@@ -23,7 +23,6 @@ if (process.env.NODE_ENV === "production") {
         },
     }
 } else {
-    console.log("Database URL:", process.env.DATABASE_URL);
     pool = new Pool({
         
         connectionString: process.env.DATABASE_URL,
