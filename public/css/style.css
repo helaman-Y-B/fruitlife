@@ -186,7 +186,7 @@ form {
     max-width: 330px;
 }
 
-/* Border animation for the form */
+/* Border animation for the login form */
 
 @property --angle {
     syntax: '<angle>';
@@ -275,6 +275,8 @@ button {
         display: block;
         padding: 10px;
         margin: 0 5vw 0px 5vw;
+        transition: background 0.2s;
+        cursor: pointer;
     }
 }
 
