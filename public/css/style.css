@@ -160,6 +160,7 @@ nav li {
     margin: 10px 0px;
 }
 
+/* Border animation for the fruits in the main page */
 @property --angle {
     syntax: '<angle>';
     initial-value: 0deg;
@@ -205,11 +206,6 @@ footer {
     align-items: center;
 }
 
-#login-background {
-    position: relative;
-    z-index: 0;
-}
-
 form {
     background-color: #FFB46B;
     display: flex;
@@ -217,9 +213,25 @@ form {
     border-radius: 10px;
     padding: 10px;
     max-width: 330px;
+    width: 75vw;
 }
 
-/* Border animation for the login form */
+/* CSS for the register page */
+
+#register-box {
+    background-color: #ffeca2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Border animation for the forms */
+
+#form-background {
+    position: relative;
+    z-index: 0;
+}
 
 @property --angle {
     syntax: '<angle>';
@@ -227,13 +239,13 @@ form {
     inherits: false;
 }
 
-#login-background::after, #login-background::before {
+#form-background::after, #form-background::before {
     content: '';
     position: absolute;
     height: calc(100% + 10px);
     width: calc(100% + 10px);
     background-color: #FF7878;
-    background-image: conic-gradient(from var(--angle), #FF7878, #FFB46B, #6DE1D2, #FF7878);
+    background-image: conic-gradient(from var(--angle), #808080, #afafaf, #ffffff, #808080);
     top: 50%;
     left: 50%;
     translate: -50% -50%;
@@ -243,7 +255,7 @@ form {
     animation: 3s spin linear infinite;
 }
 
-#login-background::before {
+#form-background::before {
     filter: blur(10px);
 }
 
