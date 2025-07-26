@@ -45,6 +45,11 @@ app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 
 /* ***********************
+ * Middleware
+ *************************/
+app.use(express.urlencoded({ extended: true }));
+
+/* ***********************
  * Routes
  *************************/
 // Login page route
