@@ -12,6 +12,7 @@
     <h2>Frutas mais vendidas</h2>
     <div id="fruits">
         <% fruits_for_sale.forEach(fruit=> { %>
+            <div class="main-fruit-background">
             <div class="main-fruit">
                 <img src="<%= fruit.fruit_img %>" alt="<%= fruit.fruit_name %>">
                 <h3>
@@ -20,6 +21,7 @@
                 <p>
                     Preço: <%= fruit.fruit_price %>
                 </p>
+            </div>
             </div>
         <% }) %>
     </div>
