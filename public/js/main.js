@@ -25,18 +25,8 @@ if (screenWidth < 560 ) {
         }
     })
 } else {
-    // For larger screens, use mouseover and mouseout events to show/hide navigation items
-    document.getElementById("nav").addEventListener("mouseover", () => {
-        const navItems = document.getElementsByClassName("nav");
-        for (let item of navItems) {
-            item.style.display = "block"; // Show all nav items
-        }
-    });
+    // For larger screens, set the arrow so that it is not visible
+    const navbar = document.getElementById("nav-arrow")
 
-    document.getElementById("nav").addEventListener("mouseout", () => {
-        const navItems = document.getElementsByClassName("nav");
-        for (let item of navItems) {
-            item.style.display = "none"; // Hide all nav items
-        }
-    });
+    navbar.style.display = "none"
 }

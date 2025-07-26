@@ -9,6 +9,7 @@ const env = require("dotenv").config();
 const static = require("./routes/static")
 const mainRoute = require("./routes/main")
 const loginRoute = require("./routes/login")
+const registerRoute = require("./routes/register")
 const pool = require("./sql/server-connection")
 const session = require("express-session")
 
@@ -44,17 +45,25 @@ app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 
 /* ***********************
+ * Middleware
+ *************************/
+app.use(express.urlencoded({ extended: true }));
+
+/* ***********************
  * Routes
  *************************/
 // Login page route
 app.use("/login", loginRoute);
+
+// Register page route
+app.use("/register", registerRoute);
 
 // Static route
 app.use(static);
 app.use(express.static("public"));
 
 // Main page route
-app.use("/", mainRoute)
+app.use("/", mainRoute);
 
 // .env items
 const port = process.env.PORT; 
