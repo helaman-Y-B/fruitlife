@@ -1,5 +1,6 @@
 const utilities = require("../utils/utils");
 const registerModels = require("../models/register-model");
+const { title } = require("process");
 
 const registerController = {}
 
@@ -26,7 +27,11 @@ registerController.registerAccount = async function(req, res) {
         // Call the model to register the account
         const isRegistered = await registerModels.registerAccount(fname, lname, email, password);
         if (isRegistered) {
-            res.status(201).send("Account registered successfully.");
+            res.status(201).render("login", {
+                title: "Login Page",
+                navBar: await utilities.getNavBar(),
+                message: "Account registered successfully. Please log in."
+            });
         } else {
             res.status(400).send("Username already exists.");
         }
