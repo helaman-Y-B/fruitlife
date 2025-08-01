@@ -10,7 +10,6 @@ const loginController = {}
 
 loginController.getLoginPage = async function(req, res) {
     const navBar = await utilities.getNavBar();
-
     res.render("login", {
         title: "Login Page",
         navBar,
@@ -22,7 +21,8 @@ loginController.logIn = async function (req, res) {
     const { email, password } = req.body;
     const fruits_for_sale = await getFruits();
 
-    const account = loginModel.signIn(email, password);
+    const account = await loginModel.signIn(email, password);
+    console.log("Testing object:", account);
     if (account) {
         res.status(200).render("main", {
             title: "Main Page",
