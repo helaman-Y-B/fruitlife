@@ -11,7 +11,8 @@ loginController.getLoginPage = async function(req, res) {
 
     res.render("login", {
         title: "Login Page",
-        navBar
+        navBar,
+        message: "Please enter your credentials to log in."
     })
 }
 

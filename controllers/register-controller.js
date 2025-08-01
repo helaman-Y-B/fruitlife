@@ -1,5 +1,6 @@
 const utilities = require("../utils/utils");
 const registerModels = require("../models/register-model");
+const { title } = require("process");
 
 const registerController = {}
 
@@ -12,12 +13,14 @@ registerController.getregisterPage = async function(req, res) {
 
     res.render("register", {
         title: "Sing up page",
-        navBar
+        navBar,
+        message: "Create your account to start using our services."
     })
 }
 
 registerController.registerAccount = async function(req, res) {
     const { fname, lname, email, password } = req.body;
+    //console.log("Registering account with:", { fname, lname, email, password });
 
     // Validate input
     if (!fname || !lname || !email || !password) {
@@ -26,9 +29,21 @@ registerController.registerAccount = async function(req, res) {
         // Call the model to register the account
         const isRegistered = await registerModels.registerAccount(fname, lname, email, password);
         if (isRegistered) {
-            res.status(201).send("Account registered successfully.");
+            res.redirect("/login");
+            
+            res.status(201).render("login", {
+                title: "Login Page",
+                navBar: await utilities.getNavBar(),
+                message: "Account registered successfully. Please log in."
+            });
         } else {
-            res.status(400).send("Username already exists.");
+            console.log("Username already exists");
+            // Redirect back to the register page with an error message
+            res.render("register", {
+                title: "Sing up page",
+                navBar: await utilities.getNavBar(),
+                message: "Username already exists"
+            })
         }
     }
 }
