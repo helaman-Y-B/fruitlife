@@ -29,8 +29,12 @@ registerController.registerAccount = async function(req, res) {
         // Call the model to register the account
         const isRegistered = await registerModels.registerAccount(fname, lname, email, password);
         if (isRegistered) {
-            res.redirect("/login");
+            // Just discovered that we can't use redirect and render at the same time since it will cause an error
+            // So we will just render the login page after registration
+
+            //res.redirect("/login");
             
+            window.location.pathname = "/login";
             res.status(201).render("login", {
                 title: "Login Page",
                 navBar: await utilities.getNavBar(),
