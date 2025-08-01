@@ -11,10 +11,11 @@ mainController.getMainPage = async function(req, res) {
     const fruits_for_sale = await getFruits();
 
     //console.log("Fruits for sale:", fruits_for_sale.rows); // Log the rows to check the data
-
+    res.redirect("/");
     res.render("main", {
         title: "Main Page",
         navBar,
+        message: "Welcome!",
         fruits_for_sale: fruits_for_sale.rows, // Ensure we return the rows from the query
     })
 }
