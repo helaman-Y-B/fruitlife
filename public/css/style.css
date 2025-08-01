@@ -226,6 +226,17 @@ form {
     align-items: center;
 }
 
+/* CSS for the secret messages */
+
+#message {
+    background-color: #FF7878;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
 /* Border animation for the forms */
 
 #form-background {

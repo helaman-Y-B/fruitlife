@@ -14,7 +14,6 @@ async function registerAccount(insertedFname, insertedLname, insertedEmail, inse
     }
     // Insert the new account into the database
     const sql = "INSERT INTO public.accounts (account_fname, account_lname, account_email, account_password) VALUES ($1, $2, $3, $4)";
-    console.log("Account registered successfully:", insertQuery);
     return await pool.query(sql, [insertedFname, insertedLname, insertedEmail, insertedPassword]); // User registered successfully
 }
 
