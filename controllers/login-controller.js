@@ -22,7 +22,6 @@ loginController.logIn = async function (req, res) {
     const fruits_for_sale = await getFruits();
 
     const account = await loginModel.signIn(email, password);
-    console.log("Testing object:", account);
     if (account) {
         res.status(200).render("main", {
             title: "Main Page",
