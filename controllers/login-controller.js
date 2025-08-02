@@ -1,6 +1,7 @@
 const utilities = require("../utils/utils");
 const loginModel = require("../models/login-model");
 const { getFruits } = require("../models/main-model");
+const loginValidation = require("../utils/inputValidation");
 
 const loginController = {}
 
@@ -22,6 +23,21 @@ loginController.logIn = async function (req, res) {
     const fruits_for_sale = await getFruits();
 
     const account = await loginModel.signIn(email, password);
+    if (!account) {
+        const validation = loginValidation.validateLogin(email, password);
+        if (!validation.valid) {
+            return res.status(400).render("login", {
+                title: "Login Page",
+                navBar: await utilities.getNavBar(),
+                message: validation.message
+            });
+        }
+        return res.status(401).render("login", {
+            title: "Login Page",
+            navBar: await utilities.getNavBar(),
+            message: "Invalid email or password."
+        });
+    }
     if (account) {
         res.status(200).render("main", {
             title: "Main Page",
