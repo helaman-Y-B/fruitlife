@@ -1,6 +1,7 @@
 const utilities = require("../utils/utils");
 const registerModels = require("../models/register-model");
 const { title } = require("process");
+const registerValidation = require("../utils/inputValidation");
 
 const registerController = {}
 
@@ -22,13 +23,24 @@ registerController.registerAccount = async function(req, res) {
     const { fname, lname, email, password } = req.body;
     //console.log("Registering account with:", { fname, lname, email, password });
 
-    // Validate input
-    if (!fname || !lname || !email || !password) {
+    const validation = registerValidation.validateRegister(fname, lname, email, password);
+    if (!validation.valid) {
+        return res.status(400).render("register", {
+            title: "Register Page",
+            navBar: await utilities.getNavBar(),
+            message: validation.message
+        });
+    }
+
+    // Validate if a field is empyt
+    else if (!fname || !lname || !email || !password) {
         return res.status(400).send("All fields are required.");
+
     } else {
         // Call the model to register the account
         const isRegistered = await registerModels.registerAccount(fname, lname, email, password);
-        if (isRegistered) {
+            
+        if (!isRegistered == false) {
             // Just discovered that we can't use redirect and render at the same time since it will cause an error
             // So we will just render the login page after registration
 
