@@ -2,6 +2,7 @@ const utilities = require("../utils/utils");
 const registerModels = require("../models/register-model");
 const { title } = require("process");
 const registerValidation = require("../utils/inputValidation");
+const bcrypt = require("bcrypt");
 
 const registerController = {}
 
@@ -37,8 +38,11 @@ registerController.registerAccount = async function(req, res) {
         return res.status(400).send("All fields are required.");
 
     } else {
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10)
+
         // Call the model to register the account
-        const isRegistered = await registerModels.registerAccount(fname, lname, email, password);
+        const isRegistered = await registerModels.registerAccount(fname, lname, email, hashedPassword);
             
         if (!isRegistered == false) {
             // Just discovered that we can't use redirect and render at the same time since it will cause an error
@@ -46,12 +50,13 @@ registerController.registerAccount = async function(req, res) {
 
             //res.redirect("/login");
             
-            window.location.pathname = "/login";
-            res.status(201).render("login", {
-                title: "Login Page",
-                navBar: await utilities.getNavBar(),
-                message: "Account registered successfully. Please log in."
-            });
+            //window.location.pathname = "/login";
+            res.status(201).redirect("login");
+            //res.render("login", {
+            //    title: "Login Page",
+            //    navBar: await utilities.getNavBar(),
+            //    message: "Account created successfully! Please log in."
+            //});
         } else {
             console.log("Username already exists");
             // Redirect back to the register page with an error message
