@@ -1,4 +1,3 @@
-const { resourceLimits } = require("worker_threads");
 const pool = require("../sql/server-connection");
 const bcrypt = require("bcrypt");
 
@@ -6,7 +5,7 @@ async function signIn(insertedEmail, insertedPassword) {
     const query = await pool.query("SELECT * FROM public.accounts WHERE account_email = $1", [insertedEmail]);
     //console.log("Query executed:", query);
 
-    if (resourceLimits.rows.length === 0) {
+    if (query.rows.length === 0) {
         return null; // No user found with the given email
     }
 
