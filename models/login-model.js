@@ -13,7 +13,7 @@ async function signIn(insertedEmail, insertedPassword) {
 
     // Check if the password matches
     if (await bcrypt.compare(insertedPassword, row.account_password)) {
-        return row.account_fname; // User found and authenticated
+        return row; // User found and authenticated
     } else {
         console.log("Invalid email or password for user");
     }

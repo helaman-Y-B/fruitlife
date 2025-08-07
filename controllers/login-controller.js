@@ -2,6 +2,7 @@ const utilities = require("../utils/utils");
 const loginModel = require("../models/login-model");
 const { getFruits } = require("../models/main-model");
 const loginValidation = require("../utils/inputValidation");
+const crypto = require("crypto");
 
 const loginController = {}
 
@@ -39,10 +40,27 @@ loginController.logIn = async function (req, res) {
         });
     }
     if (account) {
+
+        // Set the session user
+        const sessionId = crypto.randomBytes(64).toString("hex");
+        
+        req.session.user = {
+            id: account.account_id,
+            email: account.account_email,
+            name: account.account_fname,
+            type: account.account_type,
+            sessionId: sessionId
+        };
+
+        console.log("Session user set:", req.session.user); // Check in your terminal
+
+        // Store the session ID in the database if needed
+        //await loginModel.storeSessionId(account.id, sessionId);
+
         res.status(200).render("main", {
             title: "Main Page",
             navBar: await utilities.getNavBar(),
-            message: `Welcome back, ${account}!`,
+            message: `Welcome back, ${account.account_fname}!`,
             fruits_for_sale: fruits_for_sale.rows // Ensure we return the rows from the query
         });
     }        
