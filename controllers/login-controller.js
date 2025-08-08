@@ -19,12 +19,33 @@ loginController.getLoginPage = async function(req, res) {
     })
 }
 
+/* ************************
+ * Handles user Login
+ ************************** */
+
 loginController.logIn = async function (req, res) {
+
+    // Gets the email and password from the request body
     const { email, password } = req.body;
     const fruits_for_sale = await getFruits();
 
+    // Check if the email and password are provided
     const account = await loginModel.signIn(email, password);
-    if (!account) {
+
+    // If the user is already logged in, redirect to the main page
+    if (req.session.user) {
+        return res.status(200).render("main", {
+            title: "Main Page",
+            navBar: await utilities.getNavBar(),
+            message: `Welcome back, ${req.session.user.name}!`,
+            fruits_for_sale: (await getFruits()).rows // Ensure we return the rows from the query
+        });
+    }
+
+    // If the user and account is not found or the password is incorrect, return an error
+    else if (!account) {
+
+        // Validate the email and password format
         const validation = loginValidation.validateLogin(email, password);
         if (!validation.valid) {
             return res.status(400).render("login", {
@@ -39,23 +60,22 @@ loginController.logIn = async function (req, res) {
             message: "Invalid email or password."
         });
     }
-    if (account) {
+
+    // If the user is found and the password is correct, set the session user
+    else if (account) {
 
         // Set the session user
         const sessionId = crypto.randomBytes(64).toString("hex");
         
+        req.session.sessionId = sessionId; // Store the session ID in the session
         req.session.user = {
             id: account.account_id,
             email: account.account_email,
             name: account.account_fname,
             type: account.account_type,
-            sessionId: sessionId
         };
 
-        console.log("Session user set:", req.session.user); // Check in your terminal
-
-        // Store the session ID in the database if needed
-        //await loginModel.storeSessionId(account.id, sessionId);
+        //console.log("Session user set:", req.session.user); // Check in your terminal
 
         res.status(200).render("main", {
             title: "Main Page",
