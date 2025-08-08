@@ -27,6 +27,11 @@ app.use(session({
     secret: process.env.SECRET_SESSION,
     resave: true,
     saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 48, // 1 day
+        secure: false, // Set to true if using HTTPS
+        httpOnly: true, // Prevents client-side JavaScript from accessing the cookie
+    },
     name: "session",
 }));
 

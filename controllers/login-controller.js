@@ -44,6 +44,7 @@ loginController.logIn = async function (req, res) {
         // Set the session user
         const sessionId = crypto.randomBytes(64).toString("hex");
         
+        req.session.sessionId = sessionId; // Store the session ID in the session
         req.session.user = {
             id: account.account_id,
             email: account.account_email,
@@ -52,7 +53,7 @@ loginController.logIn = async function (req, res) {
             sessionId: sessionId
         };
 
-        console.log("Session user set:", req.session.user); // Check in your terminal
+        //console.log("Session user set:", req.session.user); // Check in your terminal
 
         // Store the session ID in the database if needed
         //await loginModel.storeSessionId(account.id, sessionId);
