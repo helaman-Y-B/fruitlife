@@ -8,8 +8,8 @@ INSERT INTO accounts (
 VALUES (
         'Helamã',
         'Barbour',
-        'something@gmail.com',
-        'coisa123',
+        'test@gmail.com',
+        'test123',
         'Admin'
     );
 SELECT *
@@ -19,14 +19,14 @@ INSERT INTO fruits_for_sale (
         fruit_img,
         fruit_price,
         fruit_seller,
-        max_orders,
+        fruit_description,
         account_fname,
         account_lname
     )
 VALUES 
-    ('Banana', '/img/banana.jpeg', '28.80', 'Helamã', '2', 'Helamã', 'Barbour'),
-    ('Morango', '/img/strawberry.jpeg', '18.80', 'Helamã', '7', 'Helamã', 'Barbour'),
-    ('Manga', '/img/mango.jpeg', '34.80', 'Helamã', '45', 'Helamã', 'Barbour');
+    ('Banana', '/img/banana.jpeg', '28.80', 'Helamã', 'Delicious ripe banana', 'Helamã', 'Barbour'),
+    ('Morango', '/img/strawberry.jpeg', '18.80', 'Helamã', 'Sweet and juicy strawberries', 'Helamã', 'Barbour'),
+    ('Manga', '/img/mango.jpeg', '34.80', 'Helamã', 'Tropical mangoes', 'Helamã', 'Barbour');
 
 SELECT *
 FROM fruits_for_sale;
