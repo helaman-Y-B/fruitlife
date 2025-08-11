@@ -7,25 +7,10 @@
                 }
             },
             "previewLimit": 50,
-            "server": "dpg-d1ohf13ipnbc73f1t3rg-a.virginia-postgres.render.com",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "name": "fruit_life_db_2hns",
-            "database": "fruit_life_db_2hns",
-            "username": "helamashi",
-            "password": "CIOr11s687t68mmPkPMsTovd9Hj3xTKk"
-        },
-        {
-            "pgOptions": {
-                "ssl": {
-                    "rejectUnauthorized": true
-                }
-            },
-            "previewLimit": 50,
             "server": "localhost",
             "driver": "PostgreSQL",
-            "name": "fruitLife-db",
-            "connectString": "postgresql://helamashi:CIOr11s687t68mmPkPMsTovd9Hj3xTKk@dpg-d1ohf13ipnbc73f1t3rg-a.virginia-postgres.render.com/fruit_life_db_2hns"
+            "name": "dpg-d2d6j7c9c44c73escalg-a",
+            "connectString": "postgresql://fruitlifetwo:wA0al6o9ISN8EUb9HNBVDQEv7flapDdM@dpg-d2d6j7c9c44c73escalg-a.virginia-postgres.render.com/fruitlifetwo"
         }
     ]
 }
