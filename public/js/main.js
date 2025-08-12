@@ -1,4 +1,4 @@
-// / This script handles the navigation bar functionality for different screen sizes
+// This script handles the navigation bar functionality for different screen sizes
 let screenWidth = window.innerWidth
 
 // An event listener to check if the screen width changes

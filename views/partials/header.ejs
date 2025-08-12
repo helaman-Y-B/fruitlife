@@ -2,7 +2,14 @@
     <span id="logo">
         <a href="/" title="Return to home page"><img src="/img/logo.png" alt="Fruit Life logo"></a>
     </span>
-    <div id="login">
-        <a href="/login">Login</a>
-    </div>
+
+    <% if (user) { %>
+        <span id="user">
+            <a href="/profile"><%= user.name %></a>
+        </span>
+    <% } else { %>
+        <div id="login">
+            <a href="/login">Login</a>
+        </div>
+    <% } %>
 </header>
