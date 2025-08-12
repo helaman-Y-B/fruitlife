@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS public.fruits_for_sale (
     fruit_img character varying NOT NULL,
     fruit_price numeric NOT NULL,
     fruit_seller character varying NOT NULL,
-    max_orders integer NOT NULL DEFAULT 0,
+    fruit_description character varying NOT NULL,
     account_fname character varying NOT NULL,
     account_lname character varying NOT NULL,
     CONSTRAINT fruit_pk PRIMARY KEY (fruit_id)

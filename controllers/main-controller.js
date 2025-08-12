@@ -20,6 +20,7 @@ mainController.getMainPage = async function(req, res) {
                 title: "Main Page",
                 navBar,
                 message: `${req.session.user.name}, welcome to the FruitLife store!`,
+                user: req.session.user,
                 fruits_for_sale: fruits_for_sale.rows, // Ensure we return the rows from the query
             });
         }
