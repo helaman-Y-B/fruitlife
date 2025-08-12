@@ -39,16 +39,10 @@ mainController.getMainPage = async function(req, res) {
         return res.status(500).render("error", {
             title: "Error",
             navBar,
+            user: req.session.user,
             message: "An error occurred while retrieving your session."
         });
     }
-
-    res.render("main", {
-        title: "Main Page",
-        navBar,
-        message: message(session.name),
-        fruits_for_sale: fruits_for_sale.rows, // Ensure we return the rows from the query
-    })
 }
 
 module.exports = mainController;

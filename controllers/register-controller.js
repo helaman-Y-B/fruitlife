@@ -16,6 +16,7 @@ registerController.getregisterPage = async function(req, res) {
     res.render("register", {
         title: "Sing up page",
         navBar,
+        user: req.session.user,
         message: "Create your account to start using our services."
     })
 }
@@ -29,6 +30,7 @@ registerController.registerAccount = async function(req, res) {
         return res.status(400).render("register", {
             title: "Register Page",
             navBar: await utilities.getNavBar(),
+            user: req.session.user,
             message: validation.message
         });
     }
@@ -63,6 +65,7 @@ registerController.registerAccount = async function(req, res) {
             res.render("register", {
                 title: "Sing up page",
                 navBar: await utilities.getNavBar(),
+                user: req.session.user,
                 message: "Username already exists"
             })
         }
