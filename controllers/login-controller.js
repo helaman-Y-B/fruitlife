@@ -15,6 +15,7 @@ loginController.getLoginPage = async function(req, res) {
     res.render("login", {
         title: "Login Page",
         navBar,
+        user: req.session.user,
         message: "Please enter your credentials to log in."
     })
 }
@@ -37,6 +38,7 @@ loginController.logIn = async function (req, res) {
         return res.status(200).render("main", {
             title: "Main Page",
             navBar: await utilities.getNavBar(),
+            user: req.session.user,
             message: `Welcome back, ${req.session.user.name}!`,
             fruits_for_sale: (await getFruits()).rows // Ensure we return the rows from the query
         });
@@ -51,12 +53,14 @@ loginController.logIn = async function (req, res) {
             return res.status(400).render("login", {
                 title: "Login Page",
                 navBar: await utilities.getNavBar(),
+                user: req.session.user,
                 message: validation.message
             });
         }
         return res.status(401).render("login", {
             title: "Login Page",
             navBar: await utilities.getNavBar(),
+            user: req.session.user,
             message: "Invalid email or password."
         });
     }
@@ -80,6 +84,7 @@ loginController.logIn = async function (req, res) {
         res.status(200).render("main", {
             title: "Main Page",
             navBar: await utilities.getNavBar(),
+            user: req.session.user,
             message: `Welcome back, ${account.account_fname}!`,
             fruits_for_sale: fruits_for_sale.rows // Ensure we return the rows from the query
         });
