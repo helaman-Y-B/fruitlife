@@ -20,6 +20,10 @@ p, img, a, span, li {
     font-family: 'Nunito', sans-serif;
 }
 
+main {
+    background-color: #ffeca2;
+}
+
 /* Main page */
 
 body {
@@ -306,6 +310,49 @@ button {
     border-radius: 10px;
 }
 
+/* Profile page */
+
+#profile-container {
+    background-color: #ffeca2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+#profile-picture {
+    margin: 20px auto;
+}
+
+#profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #FF7878;
+}
+
+#profile-info {
+    background-color: #FFB46B;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
+#profile-info h2 {
+    margin-bottom: 10px;
+}
+
+#profile-info p {
+    margin: 10px 0px;
+}
+
+#edit-user {
+    margin: 20px auto;
+}
+
 @media (min-width: 560px) {
     
     /* Change the navbar when screen is bigger then 560px */
@@ -334,6 +381,8 @@ button {
         transition: background 0.2s;
         cursor: pointer;
     }
+
+    /* Profile Page */
 }
 
 @media (min-width: 768px) {
