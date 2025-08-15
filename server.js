@@ -10,6 +10,7 @@ const static = require("./routes/static")
 const mainRoute = require("./routes/main")
 const loginRoute = require("./routes/login")
 const registerRoute = require("./routes/register")
+const profileRoute = require("./routes/profile")
 const pool = require("./sql/server-connection")
 const session = require("express-session")
 
@@ -62,6 +63,9 @@ app.use("/login", loginRoute);
 
 // Register page route
 app.use("/register", registerRoute);
+
+// Profile page route
+app.use("/profile", profileRoute);
 
 // Static route
 app.use(static);
