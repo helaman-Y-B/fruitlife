@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS public.accounts (
     account_email character varying NOT NULL,
     account_password character varying NOT NULL,
     account_type character varying NOT NULL DEFAULT 'Client',
+    profile_picture character varying NULL,
     CONSTRAINT account_pk PRIMARY KEY (account_id)
 );
 COMMENT ON TABLE public.accounts IS 'A table to store all the users accounts, for the ones that will buy the fruits and the ones selling the fruits.';

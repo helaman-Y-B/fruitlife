@@ -322,6 +322,10 @@ button {
     border-radius: 10px;
 }
 
+#edit-form {
+    margin: auto;
+}
+
 #profile-picture {
     margin: 20px auto;
 }

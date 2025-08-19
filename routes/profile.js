@@ -10,6 +10,6 @@ const upload = multer({
 // Route to build main page
 router.get("/", profileController.getProfilePage);
 
-router.post("/update-picture", upload.single("file"), profileController.profilePicture);
+router.post("/", upload.single("profilePicture"), profileController.profilePicture);
 
 module.exports = router;
