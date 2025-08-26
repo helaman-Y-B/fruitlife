@@ -1,5 +1,5 @@
 const utilities = require("../utils/utils");
-const editProfileModel = require("../models/edit-profile-model");
+const profileModel = require("../models/edit-profile-model");
 
 const profileController = {}
 
@@ -9,29 +9,40 @@ const profileController = {}
 
 profileController.getProfilePage = async function(req, res) {
     const navBar = await utilities.getNavBar();
+
+    const usersImg = await profileModel.getUsersImg(req.session.user.id);
+
     res.render("profile", {
         title: "Profile Page",
         navBar,
         user: req.session.user,
+        profilePicture: usersImg
     })
 }
 
 profileController.profilePicture = async function(req, res) {
     try {
-        const user = req.session.user;
+        const navBar = await utilities.getNavBar();
+        const user = req.session.user.id;
         if (!req.file) {
-            alert("Selecione uma imagem para o perfil.");
+            console.log("Selecione uma imagem para o perfil.");
             return res.redirect("/profile");
         };
 
-        const filePath = `img/profile-pictures/${req.file.filename}`;
+        const filePath = `img/profile-pictures/${req.file.filename}.jpeg`;
 
         console.log("File path:", filePath);
 
-        await editProfileModel.updateProfilePicture(user.account_id, filePath);
-        alert("Foto de perfil atualizada com sucesso!");
+        await profileModel.updateProfilePicture(user, filePath);
 
-        res.redirect("/profile");
+        const usersImg = await profileModel.getUsersImg(user);
+
+        res.render("profile", {
+            title: "Profile Page",
+            navBar,
+            user: req.session.user,
+            profilePicture: usersImg,
+        })
 
     } catch (error) {
         console.error("Error updating profile picture:", error);
