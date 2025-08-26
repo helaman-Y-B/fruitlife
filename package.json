@@ -24,6 +24,7 @@
 		"express-ejs-layouts": "^2.5.1",
 		"express-messages": "^1.0.1",
 		"express-session": "^1.18.1",
+		"multer": "^2.0.2",
 		"node": "^22.15.0",
 		"vite": "^7.0.3"
 	},

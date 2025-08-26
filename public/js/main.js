@@ -30,3 +30,26 @@ if (screenWidth < 560 ) {
 
     navbar.style.display = "none"
 }
+
+document.getElementById("edit-user").addEventListener("click", () => {
+    const fileInput = document.getElementById("profilePicture");
+    fileInput.style.display = "block"; // Show the file input for profile picture
+
+    const form = document.getElementById("edit-form");
+    form.method = "post"; // Set the form method to POST
+
+    const saveBtn = document.getElementById("saveChanges");
+    saveBtn.style.display = "block";
+    
+    const editBtn = document.getElementById("edit-user")
+    editBtn.style.display = "none"; // Hide the edit button
+})
+
+document.getElementById("saveChanges").addEventListener("click", () => {
+
+    const editBtn = document.getElementById("edit-user");
+    editBtn.style.display = "block";
+    
+    const saveBtn = document.getElementById("saveChanges");
+    saveBtn.style.display = "none"; // Hide the Save button
+})

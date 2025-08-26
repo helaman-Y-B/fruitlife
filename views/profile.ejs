@@ -1,14 +1,18 @@
 <div id="profile-container">
     <h1>Perfil</h1>
-    <div id="profile-picture">
-        <img src="user Img" alt="Sua foto">
-    </div>
-    <div id="profile-info">
-        <h2>
-            Nome: <%= user.name %>
-        </h2>
-        <p>Email: <%= user.email%></p>
-        <p>Endereço: </p>
-    </div>
+    <form id="edit-form" action="/profile" method="post" enctype="multipart/form-data">
+        <div id="profile-picture">
+            <img src=<%= profilePicture %> alt="Sua foto">
+            <input type="file" name="profilePicture" id="profilePicture" style="display: none;">
+        </div>
+        <div id="profile-info">
+            <h2>
+                Nome: <%= user.name %>
+            </h2>
+            <p>Email: <%= user.email%></p>
+            <p>Endereço: </p>
+        </div>
+        <button type="submit" id="saveChanges" style="display: none;">Salvar</button>
+    </form>
     <button id="edit-user">Editar Perfil</button>
 </div>

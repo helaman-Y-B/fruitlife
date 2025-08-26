@@ -43,6 +43,9 @@ app.use(function(req, res, next){
     next();
 });
 
+// Multer Upload setup
+
+
 /* ***********************
  * View engine and template
  *************************/
