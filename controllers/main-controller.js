@@ -10,13 +10,13 @@ const mainController = {}
 mainController.getMainPage = async function(req, res) {
     const navBar = await utilities.getNavBar();
     const fruits_for_sale = await getFruits();
-    const usersImg = await profileModel.getUsersImg(req.session.user.id);
 
     // Check if there is an active session for the user.
     try {
         if (!req.session.user) {
             return res.redirect("/login");
         } else {
+            const usersImg = await profileModel.getUsersImg(req.session.user.id);
             // If the user is logged in, render the main page with their session data.
             return res.render("main", {
                 title: "Main Page",
