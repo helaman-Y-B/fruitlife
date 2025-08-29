@@ -1,5 +1,7 @@
 const utilities = require("../utils/utils");
 const profileModel = require("../models/edit-profile-model");
+const fs = require("fs");
+const path = require("path");
 
 const profileController = {}
 
@@ -29,9 +31,24 @@ profileController.profilePicture = async function(req, res) {
             return res.redirect("/profile");
         };
 
-        const filePath = `img/profile-pictures/${req.file.filename}.jpeg`;
+        const oldImg = await profileModel.getUsersImg(user);
 
-        console.log("File path:", filePath);
+        if (oldImg && oldImg !== "img/profile-pictures/default-profile-picture.jpeg") {
+            const oldImgPath = path.join( "/workspaces/fruitlife/", "public/", oldImg);
+            fs.unlink(oldImgPath, (error) => {
+                if (error) {
+                    console.error("Erro ao deletar a imagem antiga:", error);
+                } else {
+                    console.log("Imagem antiga deletada com sucesso.");
+                }
+            })
+        }
+
+        //const ext = path.extname(req.file.originalname).toLowerCase();
+
+        const filePath = `img/profile-pictures/${req.file.filename}`;
+
+        //console.log("File path:", filePath);
 
         await profileModel.updateProfilePicture(user, filePath);
 

@@ -1,5 +1,6 @@
 const utilities = require("../utils/utils");
 const { getFruits } = require("../models/main-model");
+const profileModel = require("../models/edit-profile-model");
 
 const mainController = {}
 
@@ -9,6 +10,7 @@ const mainController = {}
 mainController.getMainPage = async function(req, res) {
     const navBar = await utilities.getNavBar();
     const fruits_for_sale = await getFruits();
+    const usersImg = await profileModel.getUsersImg(req.session.user.id);
 
     // Check if there is an active session for the user.
     try {
@@ -21,6 +23,7 @@ mainController.getMainPage = async function(req, res) {
                 navBar,
                 message: `${req.session.user.name}, welcome to the FruitLife store!`,
                 user: req.session.user,
+                profilePicture: usersImg,
                 fruits_for_sale: fruits_for_sale.rows, // Ensure we return the rows from the query
             });
         }
@@ -40,6 +43,7 @@ mainController.getMainPage = async function(req, res) {
             title: "Error",
             navBar,
             user: req.session.user,
+            profilePicture: usersImg,
             message: "An error occurred while retrieving your session."
         });
     }
