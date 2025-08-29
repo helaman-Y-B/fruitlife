@@ -5,7 +5,7 @@
 
     <% if (user) { %>
         <span id="user">
-            <a href="/profile"><%= user.name %></a>
+            <a href="/profile"><img src=<%= profilePicture %> alt="user_img"></a>
         </span>
     <% } else { %>
         <div id="login">
