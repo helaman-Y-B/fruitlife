@@ -11,6 +11,18 @@
             "driver": "PostgreSQL",
             "name": "dpg-d2d6j7c9c44c73escalg-a",
             "connectString": "postgresql://fruitlifetwo:wA0al6o9ISN8EUb9HNBVDQEv7flapDdM@dpg-d2d6j7c9c44c73escalg-a.virginia-postgres.render.com/fruitlifetwo"
+        },
+        {
+            "pgOptions": {
+                "ssl": {
+                    "rejectUnauthorized": true
+                }
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "PostgreSQL",
+            "name": "fruitLifeDbTwo",
+            "connectString": "postgresql://fruitlifetwo:wA0al6o9ISN8EUb9HNBVDQEv7flapDdM@dpg-d2d6j7c9c44c73escalg-a.virginia-postgres.render.com/fruitlifetwo"
         }
     ]
 }
