@@ -60,13 +60,13 @@ registerController.registerAccount = async function(req, res) {
             //    message: "Account created successfully! Please log in."
             //});
         } else {
-            console.log("Username already exists");
+            console.log("Email already exists");
             // Redirect back to the register page with an error message
             res.render("register", {
                 title: "Sing up page",
                 navBar: await utilities.getNavBar(),
                 user: req.session.user,
-                message: "Username already exists"
+                message: "Email already exists"
             })
         }
     }

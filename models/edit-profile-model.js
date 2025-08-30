@@ -9,7 +9,7 @@ async function getUsersImg(userId) {
         return img.rows[0].profile_picture;
     }
     // Return null or a default image path if not set
-    return "img/logo.png";
+    return "/img/profile-pictures/standard.jpeg";
 }
 
 async function updateProfilePicture(userId, filePath) {

@@ -31,6 +31,7 @@ if (screenWidth < 560 ) {
     navbar.style.display = "none"
 }
 
+// Edit profile functionality
 document.getElementById("edit-user").addEventListener("click", () => {
     const fileInput = document.getElementById("profilePicture");
     fileInput.style.display = "block"; // Show the file input for profile picture
@@ -52,4 +53,6 @@ document.getElementById("saveChanges").addEventListener("click", () => {
     
     const saveBtn = document.getElementById("saveChanges");
     saveBtn.style.display = "none"; // Hide the Save button
+
+    window.location.reload();
 })
