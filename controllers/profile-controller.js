@@ -26,14 +26,11 @@ profileController.profilePicture = async function(req, res) {
     try {
         const navBar = await utilities.getNavBar();
         const user = req.session.user.id;
-        if (!req.file) {
-            console.log("Selecione uma imagem para o perfil.");
-            return res.redirect("/profile");
-        };
 
         const oldImg = await profileModel.getUsersImg(user);
 
-        if (oldImg && oldImg !== "img/profile-pictures/default-profile-picture.jpeg") {
+        // Delete the old image if it's not NULL
+        if (oldImg && oldImg !== "/img/profile-pictures/standard.jpeg") {
             const oldImgPath = path.join( "/workspaces/fruitlife/", "public/", oldImg);
             fs.unlink(oldImgPath, (error) => {
                 if (error) {
@@ -43,8 +40,6 @@ profileController.profilePicture = async function(req, res) {
                 }
             })
         }
-
-        //const ext = path.extname(req.file.originalname).toLowerCase();
 
         const filePath = `img/profile-pictures/${req.file.filename}`;
 

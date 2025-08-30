@@ -5,7 +5,7 @@ async function registerAccount(insertedFname, insertedLname, insertedEmail, inse
     //console.log("Query executed:", query);
 
     if (query.rows.length > 0) {
-        console.log("Username already exists");
+        console.log("Email already exists");
         return false;
     } else {
         // Insert the new account into the database
