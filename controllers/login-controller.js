@@ -2,7 +2,9 @@ const utilities = require("../utils/utils");
 const loginModel = require("../models/login-model");
 const { getFruits } = require("../models/main-model");
 const loginValidation = require("../utils/inputValidation");
+const profileModel = require("../models/edit-profile-model");
 const crypto = require("crypto");
+
 
 const loginController = {}
 
@@ -35,11 +37,13 @@ loginController.logIn = async function (req, res) {
 
     // If the user is already logged in, redirect to the main page
     if (req.session.user) {
+        const usersImg = await profileModel.getUsersImg(req.session.user.id);
         return res.status(200).render("main", {
             title: "Main Page",
             navBar: await utilities.getNavBar(),
             user: req.session.user,
             message: `Welcome back, ${req.session.user.name}!`,
+            profilePicture: usersImg,
             fruits_for_sale: (await getFruits()).rows // Ensure we return the rows from the query
         });
     }
@@ -49,11 +53,13 @@ loginController.logIn = async function (req, res) {
 
         // Validate the email and password format
         const validation = loginValidation.validateLogin(email, password);
+        const usersImg = await profileModel.getUsersImg(req.session.user.id);
         if (!validation.valid) {
             return res.status(400).render("login", {
                 title: "Login Page",
                 navBar: await utilities.getNavBar(),
                 user: req.session.user,
+                profilePicture: usersImg,
                 message: validation.message
             });
         }
@@ -61,6 +67,7 @@ loginController.logIn = async function (req, res) {
             title: "Login Page",
             navBar: await utilities.getNavBar(),
             user: req.session.user,
+            profilePicture: usersImg,
             message: "Invalid email or password."
         });
     }
@@ -81,11 +88,14 @@ loginController.logIn = async function (req, res) {
 
         //console.log("Session user set:", req.session.user); // Check in your terminal
 
+        const usersImg = await profileModel.getUsersImg(req.session.user.id);
+
         res.status(200).render("main", {
             title: "Main Page",
             navBar: await utilities.getNavBar(),
             user: req.session.user,
             message: `Welcome back, ${account.account_fname}!`,
+            profilePicture: usersImg,
             fruits_for_sale: fruits_for_sale.rows // Ensure we return the rows from the query
         });
     }        
